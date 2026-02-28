@@ -15,19 +15,26 @@ const router = express.Router();
 
 router.post('/single-check', async (req, res) => {
   try {
-    const { bankAccount, mobile, age } = req.body;
+    // Accept both camelCase and snake_case for compatibility
+    const bank_account = req.body.bank_account || req.body.bankAccount;
+    const mobile = req.body.mobile;
+    const age = req.body.age;
+    const scheme = req.body.scheme;
 
-    if (!bankAccount || !mobile || !age)
+    if (!bank_account || !mobile || !age || !scheme)
       return res.status(400).json({ error: 'Missing fields' });
 
-    const bankDup = 1; // demo logic
+    // Demo logic for feature calculation
+    const bankDup = 1;
     const mobileDup = 1;
     const ageAnomaly = age > 100 ? 1 : 0;
 
+    // Call Lambda or scoring service
     const riskScore = await lambdaService.getRiskScore({
       bank_dup_count: bankDup,
       mobile_dup_count: mobileDup,
-      age_anomaly: ageAnomaly
+      age_anomaly: ageAnomaly,
+      scheme
     });
 
     const riskLevel =
@@ -35,10 +42,10 @@ router.post('/single-check', async (req, res) => {
       riskScore > 40 ? 'Medium' : 'Low';
 
     res.json({
-      riskScore,
-      riskLevel
+      risk_score: riskScore,
+      risk_level: riskLevel,
+      explanation: `Bank duplicates: ${bankDup}, Mobile duplicates: ${mobileDup}, Age anomaly: ${ageAnomaly}`
     });
-
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
