@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Gov Fraud Analytics</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      color: #222;
+      transition: background 0.8s;
+    }
+    .container {
+      max-width: 400px;
+      margin: 60px auto;
+      background: rgba(255,255,255,0.85);
+      border-radius: 22px;
+      box-shadow: 0 8px 32px 0 rgba(250, 168, 85, 0.18);
+      padding: 38px 32px 28px 32px;
+      text-align: center;
+      animation: fadeIn 1.2s cubic-bezier(.42,0,.58,1);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 22px;
+      letter-spacing: 1px;
+      color: #f76b1c;
+      text-shadow: 0 2px 8px rgba(250,168,85,0.12);
+      animation: slideDown 1s cubic-bezier(.42,0,.58,1);
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-bottom: 18px;
+      animation: fadeIn 1.4s cubic-bezier(.42,0,.58,1);
+    }
+    input {
+      padding: 13px 16px;
+      border-radius: 10px;
+      border: 1px solid #fda085;
+      font-size: 1rem;
+      background: #fff;
+      color: #222;
+      outline: none;
+      transition: box-shadow 0.2s, border 0.2s;
+      box-shadow: 0 2px 8px rgba(250,168,85,0.08);
+    }
+    input:focus {
+      box-shadow: 0 0 0 2px #f76b1c;
+      border: 1.5px solid #f76b1c;
+    }
+    button {
+      padding: 13px 0;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(90deg, #fda085 0%, #f76b1c 100%);
+      color: #fff;
+      font-size: 1.15rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(250,168,85,0.18);
+      transition: background 0.2s, transform 0.2s;
+      animation: pulseBtn 2s infinite;
+    }
+    @keyframes pulseBtn {
+      0%, 100% { box-shadow: 0 2px 8px rgba(250,168,85,0.18); }
+      50% { box-shadow: 0 0 16px 4px #fda08544; }
+    }
+    button:hover {
+      background: linear-gradient(90deg, #f76b1c 0%, #fda085 100%);
+      transform: translateY(-2px) scale(1.04);
+    }
+    #result {
+      margin-top: 22px;
+      padding: 18px 0 0 0;
+      border-top: 1px solid #fda08544;
+      font-size: 1.15rem;
+      color: #222;
+      min-height: 40px;
+      transition: background 0.2s;
+      animation: fadeIn 1.6s cubic-bezier(.42,0,.58,1);
+    }
+    #result h3 {
+      font-size: 1.6rem;
+      margin-bottom: 8px;
+      color: #f76b1c;
+      text-shadow: 0 2px 8px #fda08544;
+      animation: popIn 0.7s cubic-bezier(.42,0,.58,1);
+    }
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.7); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    #result h4 {
+      font-size: 1.15rem;
+      color: #222;
+      margin-bottom: 0;
+      animation: fadeIn 1.8s cubic-bezier(.42,0,.58,1);
+    }
+    @media (max-width: 500px) {
+      .container {
+        max-width: 97vw;
+        padding: 18px 8px;
+      }
+      h1 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Single Beneficiary Fraud Check</h1>
+
+  <form id="singleForm">
+    <input type="text" id="bank" placeholder="Bank Account" required>
+    <input type="text" id="mobile" placeholder="Mobile" required>
+    <input type="number" id="age" placeholder="Age" required>
+    <button type="submit">Check Risk</button>
+  </form>
+
+  <div id="result"></div>
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>

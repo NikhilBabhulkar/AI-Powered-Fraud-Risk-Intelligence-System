@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AI Fraud Intelligence Portal | Dashboard</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+  <div id="sidebar" class="sidebar">
+    <div class="sidebar-header">Gov Fraud Portal</div>
+    <ul class="nav">
+      <li data-tab="overview" class="active">Overview</li>
+      <li data-tab="singleCheck">Single Beneficiary Check</li>
+      <li data-tab="bulkAudit">Bulk Fraud Audit</li>
+      <li data-tab="evaluation">Evaluation & Insights</li>
+      <li data-tab="architecture">Architecture</li>
+      <li id="logoutBtn">Logout</li>
+    </ul>
+  </div>
+  <div id="main-content" class="main-content">
+    <!-- Tab content will be loaded here -->
+  </div>
+  <script src="js/dashboard.js"></script>
+  <script src="js/singleCheck.js"></script>
+  <script src="js/bulkAudit.js"></script>
+  <script src="js/evaluation.js"></script>
+  <script src="js/architecture.js"></script>
+</body>
+</html>
